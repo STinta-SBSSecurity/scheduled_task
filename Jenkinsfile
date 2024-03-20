@@ -11,10 +11,14 @@ pipeline {
                 }
             }
         }
-        stage('Call hello') {
-            when {
-                timeout(time: 2, unit: 'MINUTES')
+        stage('Espera 2 minutos') {
+            steps {
+                script {
+                    sleep 120 // Espera 5 minutos (300 segundos)
+                }
             }
+        }
+        stage('Call hello') {
             steps {
                 script {
                     sh "python3 hello.py"
