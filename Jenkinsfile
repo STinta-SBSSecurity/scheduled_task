@@ -16,11 +16,11 @@ pipeline {
                 stage('Call hello') {
                     steps {
                         script {
-                            // Verificar si es la primera ejecución del pipeline
+                            // Si es la primera ejecución del pipeline
                             if (currentBuild.number == 1) {
                                 echo 'Segundo stage ejecutándose en paralelo en la primera corrida'
                             } else {
-                                // Esperar 5 minutos (300 segundos) antes de ejecutar el segundo stage
+                                // Esperar 5 minutos (300 segundos)
                                 sleep 300
                             }
                             def horaEjecucion = new Date()
