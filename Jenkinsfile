@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        cron('H/1 * * * *') // Trigger cada 1 minuto
+        cron('H/3 * * * *') // Trigger cada 1 minuto
     }
     stages {
         stage('Call do_task') {
@@ -14,7 +14,7 @@ pipeline {
         stage('Espera 2 minutos') {
             steps {
                 script {
-                    sleep 120 // Espera 5 minutos (300 segundos)
+                    sleep 120
                 }
             }
         }
