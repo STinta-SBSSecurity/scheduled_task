@@ -5,11 +5,6 @@ pipeline {
     }
     stages {
         stage('Call do_task') {
-            when {
-                expression{
-                    currentBuild.getBuildVariables().get('TRIGGER_CAUSE')=='cron1'
-                }
-            }
             steps {
                 script {
                     sh "python3 do_task.py"
