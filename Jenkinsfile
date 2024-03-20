@@ -1,10 +1,32 @@
 pipeline {
     agent any
     triggers {
-        cron(spec: 'H/30 * * * *', label: 'cron1') // Trigger cada 30 minutos
+        cron(spec: 'H/1 * * * *') // Trigger cada 1 minuto
     }
-    triggers {
-        cron(spec: 'H/15 * * * *', label: 'cron2') // Otro trigger cada 15 minutos
+    stages {
+        stage('Call do_task') {
+            when {
+                expression{
+                    currentBuild.getBuildVariables().get('TRIGGER_CAUSE')=='cron1'
+                }
+            }
+            steps {
+                script {
+                    sh "python3 do_task.py"
+                }
+            }
+        }
+        stage('Call hello') {
+            when {
+                expression{
+                    expression { (new Date().getTime() - currentBuild.startTimeInMillis) / 1000 / 60 % 2 == 0 }
+                }
+            }
+            steps {
+                script {
+                    sh "python3 hello.py"
+                }
+            }
+        }
     }
-    
 }
