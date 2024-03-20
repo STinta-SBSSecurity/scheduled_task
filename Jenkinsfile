@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        cron(spec: 'H/1 * * * *') // Trigger cada 1 minuto
+        cron('H/1 * * * *') // Trigger cada 1 minuto
     }
     stages {
         stage('Call do_task') {
