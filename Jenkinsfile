@@ -21,6 +21,8 @@ pipeline {
         stage('Call hello') {
             steps {
                 script {
+                    def horaEjecucion = new Date()
+                    echo "Hora de ejecución del segundo stage: ${horaEjecucion}"
                     sh "python3 hello.py"
                 }
             }
