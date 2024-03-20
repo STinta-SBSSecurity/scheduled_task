@@ -1,8 +1,10 @@
 pipeline {
     agent any
     triggers {
-        cron(spec: 'H/1 * * * *') // cada 3 minutos
-        cron(spec: 'H/3 * * * *') // cada 5 minutos
+        cron(spec: 'H/30 * * * *', label: 'cron1') // Trigger cada 30 minutos
     }
-   
+    triggers {
+        cron(spec: 'H/15 * * * *', label: 'cron2') // Otro trigger cada 15 minutos
+    }
+    
 }
