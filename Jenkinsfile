@@ -1,8 +1,8 @@
 pipeline {
     agent any
     triggers {
-        cron(name:'cron1', cron:'H/2 * * * *') // Ejecutar cada 3 minutos
-        cron(name:'cron2', cron:'H/3 * * * *') // Ejecutar cada 3 minutos
+        cron(name:'cron1', 'H/2 * * * *') // Ejecutar cada 3 minutos
+        cron(name:'cron2', 'H/3 * * * *') // Ejecutar cada 3 minutos
     }
     stages {
         stage('Call do_task') {
