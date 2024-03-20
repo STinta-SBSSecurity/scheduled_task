@@ -18,7 +18,7 @@ pipeline {
                         script {
                             // Verificar si es la primera ejecución del pipeline
                             if (currentBuild.number == 1) {
-                                echo 'Este es el segundo stage ejecutándose en paralelo en la primera corrida'
+                                echo 'Segundo stage ejecutándose en paralelo en la primera corrida'
                             } else {
                                 // Esperar 5 minutos (300 segundos) antes de ejecutar el segundo stage
                                 sleep 300
