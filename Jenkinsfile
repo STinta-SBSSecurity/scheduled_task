@@ -1,14 +1,14 @@
 pipeline {
     agent any
     triggers {
-        cron('H/2 * * * *') // Ejecutar cada 3 minutos
-        cron('H/3 * * * *') // Ejecutar cada 3 minutos
+        cron(name:'cron1', cron:'H/2 * * * *') // Ejecutar cada 3 minutos
+        cron(name:'cron2', cron:'H/3 * * * *') // Ejecutar cada 3 minutos
     }
     stages {
         stage('Call do_task') {
             when {
                 expression{
-                    currentBuild.getBuildVariables().get('TRIGGER_CAUSE')=='cron'
+                    currentBuild.getBuildVariables().get('TRIGGER_CAUSE')=='cron1'
                 }
             }
             steps {
