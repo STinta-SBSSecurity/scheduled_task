@@ -13,9 +13,7 @@ pipeline {
         }
         stage('Call hello') {
             when {
-                expression{
-                    expression { (new Date().getTime() - currentBuild.startTimeInMillis) / 1000 / 60 % 2 == 0 }
-                }
+                timeout(time: 2, unit: 'MINUTES')
             }
             steps {
                 script {
